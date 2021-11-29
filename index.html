@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SERVIDOR CRUD </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{background-color: aqua;}
+        #saida {width: 40em;height: 30em;}
+    </style>
+
+</head>
+<body>
+    <h1>SERVIDOR CRUD</h1>
+    Nome<br>
+    <input type="text" id="entradaNome" /><br>
+    Valor:<br>
+    <input type="number" id="entradaValor" />
+    <input type="button" value="INSERIR PRODUTO"><br>
+    <br>
+    ID:<br>
+    <input type="number" id="entradaId" />
+    <input type="button" value="DELETAR PRODUTO">
+    <br><br>
+    <input type="button" id="btnExibir" value="EXIBIR PRODUTOs">
+    <br>
+    <input type="text" id="saida" readonly>
+</body>
+
+<script>
+    const xhr = new XMLHttpRequest();
+    const url = "http://127.0.0.1:3000/exibir";
+    const nome = document.getElementById('entradaNome');
+    const valor = document.getElementById('entradaValor');
+    const id = document.getElementById('entradaId');
+    const btnExibir = document.getElementById('btnExibir');
+    const saida = document.getElementById('saida');
+
+    function inserirProduto() {
+        
+    }
+
+    function deletarProduto() {
+
+    }
+
+    function exibirProdutos() {
+        saida.value = "";
+        fetch(url)
+            .then(res => res.json())
+            .then(dataa => {
+                saida.value = dataa
+        })
+        .catch(e => console.error(e))
+	}
+    
+    btnExibir.addEventListener("click", exibirProdutos);
+</script>
+</html>
